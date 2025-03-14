@@ -1,9 +1,10 @@
+// api/gemini.js
 import fetch from "node-fetch";
 
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Set CORS headers - updated to specifically allow your domain
   res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Or specifically "https://mentari.unpam.ac.id"
+  res.setHeader("Access-Control-Allow-Origin", "https://mentari.unpam.ac.id");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,OPTIONS,PATCH,DELETE,POST,PUT"
@@ -35,7 +36,7 @@ export default async function handler(req, res) {
     }
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-thinking-exp-01-21:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
